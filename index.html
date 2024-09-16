@@ -1,0 +1,109 @@
+---
+layout: default
+---
+
+<div class="posts">
+  {% for post in site.posts %}
+    <article class="post">
+
+      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+
+      <div class="entry">
+        {{ post.excerpt }}
+      </div>
+
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+    </article>
+  {% endfor %}
+</div>
+
+<style>
+  .posts {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .post {
+    background: rgba(255, 255, 255, 0.9); /* Light mode background */
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    padding: 20px;
+    color: #000; /* Text color always black */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Dark mode */
+  body.dark .post {
+    background: rgba(255, 255, 255, 0.3); /* Lighter background in dark mode */
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5); /* Stronger shadow in dark mode */
+    color: #000; /* Text color remains black */
+  }
+
+  .post h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3); /* Slight shadow for text to appear brighter */
+  }
+
+  /* Styling for links in the post */
+  .post a {
+    color: #000; /* Black color for links */
+    text-decoration: none; /* No underline */
+    position: relative;
+  }
+
+  /* Hover effect for links */
+  .post a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000; /* Black underline */
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .post a:hover::after {
+    transform: scaleX(1); /* Show underline on hover */
+  }
+
+  /* Entry text styling */
+  .post .entry {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #000; /* Black color for entry text */
+  }
+
+  /* Read more link */
+  .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #000; /* Black color for read more link */
+    text-decoration: none;
+    position: relative;
+  }
+
+  .read-more::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #000; /* Black underline */
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .read-more:hover::after {
+    transform: scaleX(1); /* Show underline on hover */
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<article class="page">
+  <div class="entry">
+    {{ content }}
+  </div>
+</article>
+
+<style>
+  .page {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Đổ bóng mạnh hơn */
+    background: transparent;
+  }
+
+  .page-title {
+    font-size: 2.2rem;
+    color: inherit;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .entry {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: inherit;
+  }
+
+  body.dark .page {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2); /* Đổ bóng mạnh hơn cho dark mode */
+  }
+
+  body.dark .page-title {
+    color: inherit;
+  }
+
+  body.dark .entry {
+    color: inherit;
+  }
+</style>

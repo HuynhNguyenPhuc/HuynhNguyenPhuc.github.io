@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+  {% include meta.html %}
+
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  
+  <style>
+    body.light {
+      background-color: #f7f7f7;
+      color: #1c1c1c;
+    }
+
+    body.dark {
+      background-color: rgba(127, 127, 127, 0.9);
+      color: #e0e0e0;
+    }
+
+    .wrapper-masthead {
+      background: rgba(32, 32, 32, 0.9); /* Reduced darkness */
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      border-bottom: 1px solid #333;
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5); /* Added shadow */
+    }
+
+    .wrapper-masthead .site-name {
+      color: #e0e0e0;
+    }
+
+    body.light .wrapper-masthead .site-name {
+      color: #1c1c1c;
+    }
+
+    .wrapper-footer {
+      background: rgba(32, 32, 32, 0.9);
+      padding: 20px;
+      border-top: 1px solid #333;
+      color: #e0e0e0;
+      text-shadow: 0 0 2px rgba(255, 255, 255, 0.7);
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+    }
+
+    body.light .wrapper-footer {
+      background: rgba(255, 255, 255, 0.9); /* Lighter background */
+      color: #1c1c1c; /* Black text */
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    body.light .wrapper-masthead {
+      background: rgba(255, 255, 255, 0.9); /* Lighter background */
+      color: #1c1c1c; /* Black text */
+      border-bottom: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #333;
+      color: #e0e0e0;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .theme-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: #e0e0e0;
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    body.dark .theme-toggle svg {
+      filter: drop-shadow(0 0 5px #e0e0e0);
+    }
+
+    body.light .theme-toggle svg {
+      filter: drop-shadow(0 0 2px #333);
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: #e0e0e0;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+    }
+
+    .back-to-top svg {
+      width: 24px;
+      height: 24px;
+      stroke: #e0e0e0;
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    body.dark .back-to-top svg {
+      filter: drop-shadow(0 0 5px #e0e0e0);
+    }
+
+    body.light .back-to-top svg {
+      filter: drop-shadow(0 0 2px #333);
+    }
+
+    .footer svg {
+      fill: none;
+      stroke-width: 2;
+      transition: stroke 0.3s ease, filter 0.3s ease;
+    }
+
+    body.dark .footer svg {
+      stroke: #e0e0e0;
+      filter: drop-shadow(0 0 5px #e0e0e0);
+    }
+
+    body.light .footer svg {
+      stroke: #1c1c1c;
+      filter: drop-shadow(0 0 2px #333);
+    }
+
+    nav a {
+      margin-right: 20px;
+      text-decoration: none;
+      color: rgba(16, 16, 16, 0.8); /* Black text in light mode */
+      font-size: 1.1rem;
+      font-weight: 500;
+      font-family: 'Helvetica Neue', sans-serif;
+      position: relative;
+    }
+
+    body.dark nav a {
+      color: #e0e0e0; /* Bright text in dark mode */
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #e0e0e0;
+      left: 0;
+      bottom: -2px;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    nav a:hover {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper-masthead">
+    <div class="container">
+      <header class="masthead clearfix">
+        <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
+
+        <div class="site-info">
+          <p class="site-description">{{ site.description }}</p>
+        </div>
+
+        <nav>
+          <a href="{{ site.baseurl }}/">Blog</a>
+          <a href="{{ site.baseurl }}/categories/">Categories</a>
+          <a href="{{ site.baseurl }}/about">About</a>
+        </nav>
+
+        <button class="theme-toggle" id="theme-toggle">
+          <!-- Light Mode Icon -->
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+          </svg>
+          <!-- Dark Mode Icon -->
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M17 12.79A9 9 0 0 1 8.21 3a7 7 0 1 0 8.79 9.79z" />
+          </svg>
+        </button>
+      </header>
+    </div>
+  </div>
+
+  <div id="main" role="main" class="container">
+    {{ content }}
+  </div>
+
+  <div class="wrapper-footer">
+    <div class="container">
+      <footer class="footer">
+        {% include svg-icons.html %}
+      </footer>
+    </div>
+  </div>
+
+  {% include analytics.html %}
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="back-to-top">
+    <!-- Up Arrow SVG -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <script>
+    // JavaScript for theme toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    document.body.classList.add(currentTheme);
+    sunIcon.style.display = currentTheme === 'light' ? 'block' : 'none';
+    moonIcon.style.display = currentTheme === 'dark' ? 'block' : 'none';
+
+    themeToggle.addEventListener('click', () => {
+      if (document.body.classList.contains('light')) {
+        document.body.classList.replace('light', 'dark');
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.body.classList.replace('dark', 'light');
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    // JavaScript for back-to-top button
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
