@@ -103,7 +103,7 @@ permalink: /about/
   body.dark .info-section h3, 
   body.dark .contact-section h3 {
     border-bottom-color: #aaa;
-    color: #ddd;
+    color: #000;
   }
 
   body.dark .email-link {

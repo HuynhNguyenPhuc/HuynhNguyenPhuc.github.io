@@ -3,35 +3,85 @@ layout: default
 ---
 
 <article class="post">
-  <!-- Title of the post -->
-  <h1>{{ page.title }}</h1>
+  <h1 class="post-title">{{ page.title }}</h1>
 
-  <!-- Main content of the post -->
   <div class="entry">
     {{ content }}
   </div>
 
-  <!-- Date formatting: "Month Day, Year" -->
   <div class="date">
     Written on {{ page.date | date: "%B %d, %Y" }}
   </div>
 
-  <!-- Display categories -->
   <p>Categories:
     {% for category in page.categories %}
       <a href="/categories/{{ category | slugify }}">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
     {% endfor %}
   </p>
 
-  <!-- Display tags -->
   <p>Tags:
     {% for tag in page.tags %}
       <a href="/tags/{{ tag | slugify }}">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}
     {% endfor %}
   </p>
 
-  <!-- Include Disqus comments section -->
   {% if site.disqus_shortname %}
     {% include disqus.html %}
   {% endif %}
 </article>
+
+<style>
+  .post {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .post-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .entry {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 40px;
+  }
+
+  .date {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #333;
+  }
+
+  p a {
+    text-decoration: none;
+    color: #0066cc;
+  }
+
+  p a:hover {
+    text-decoration: underline;
+  }
+
+  body.dark .post {
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.5);
+    color: #e0e0e0;
+  }
+</style>
