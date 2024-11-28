@@ -12,10 +12,7 @@ permalink: /about/
   <section class="info-section">
     <h3>More Information</h3>
     <p>
-      Hello, I'm <strong>Phuc Huynh</strong>. I'm currently a senior student at Ho Chi Minh City University of Technology. I have a deep passion for mathematics, and I'm also a huge fan of anime and manga. In my free time, I love playing games, reading, watching football and animes and following eSports tournaments.
-    </p>
-    <p>
-      My favorite athlete in the world of eSports is Faker, who I admire for his incredible skill and consistency in League of Legends.
+      Hello, I'm <strong>Phuc Huynh</strong>. I'm currently a senior student at Ho Chi Minh City University of Technology. I have a deep passion for Mathematics and Artificial Intelligence.
     </p>
   </section>
 
