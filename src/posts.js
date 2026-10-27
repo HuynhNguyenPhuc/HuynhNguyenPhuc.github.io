@@ -21,12 +21,14 @@ function parse(path, raw) {
     }
   }
   const slug = path.split("/").pop().replace(/\.md$/, "");
+  const body = match ? match[2] : raw;
   return {
     slug,
+    minutes: Math.max(1, Math.round(body.split(/\s+/).filter(Boolean).length / 220)),
     title: meta.title || slug,
     date: meta.date || "",
     summary: meta.summary || "",
-    body: match ? match[2] : raw,
+    body,
   };
 }
 

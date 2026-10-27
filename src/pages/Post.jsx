@@ -19,7 +19,7 @@ export default function Post() {
       </p>
       <Markdown>{post.body}</Markdown>
       <p className="more">
-        <Link to="/blog">All posts</Link>
+        <Link to="/">All posts</Link>
       </p>
     </article>
   );

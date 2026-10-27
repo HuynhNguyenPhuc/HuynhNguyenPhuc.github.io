@@ -11,12 +11,14 @@ export default function PostList({ limit }) {
   return (
     <ul className="post-list">
       {shown.map((post) => (
-        <li key={post.slug}>
+        <li className="card" key={post.slug}>
           <h3>
             <Link to={`/blog/${post.slug}`}>{post.title}</Link>
           </h3>
-          <time dateTime={post.date}>{formatDate(post.date)}</time>
           {post.summary && <p>{post.summary}</p>}
+          <p className="meta">
+            <time dateTime={post.date}>{formatDate(post.date)}</time> | {post.minutes} min read
+          </p>
         </li>
       ))}
     </ul>

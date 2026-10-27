@@ -1,8 +1,8 @@
 import { useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer.jsx";
 import Header from "./components/Header.jsx";
-import BlogIndex from "./pages/BlogIndex.jsx";
+import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import Post from "./pages/Post.jsx";
@@ -31,7 +31,8 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<BlogIndex />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Navigate to="/" replace />} />
           <Route path="/blog/:slug" element={<Post />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

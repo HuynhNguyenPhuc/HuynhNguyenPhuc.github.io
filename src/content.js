@@ -1,6 +1,6 @@
 export const profile = {
-  name: "Huynh Nguyen Phuc",
-  lead: "I'm a research engineer at GraphicsMiner Lab in Ho Chi Minh City. I work on 3D generative models and on adapting world foundation models to medical imaging.",
+  name: "Phuc Huynh",
+  lead: "I'm a research engineer in Ho Chi Minh City, formerly at GraphicsMiner Vietnam. My interests are computer vision and graphics, medical imaging, generative models and world foundation models.",
   email: "nguyenphuchuynh.work@gmail.com",
   github: "https://github.com/HuynhNguyenPhuc",
   linkedin: "https://www.linkedin.com/in/phuchuynh0904",
@@ -12,54 +12,58 @@ export const research = [
   {
     title: "Single View X-Ray Novel View Synthesis with World Foundation Model",
     href: "https://www.nvidia.com/gtc/session-catalog/sessions/gtc26-p81204/",
-    meta: "Poster, NVIDIA GTC 2026, San Jose. First author.",
-    body: "Adapts NVIDIA Cosmos-Predict2 to generate new radiographic views from a single frontal chest X-ray, with the goal of reducing patient radiation exposure. The model trains on digitally reconstructed radiographs rendered from 771 TCIA CT volumes.",
+    meta: "First-author poster, presented at NVIDIA GTC 2026, San Jose.",
+    body: "Adapts NVIDIA Cosmos-Predict2 to generate new radiographic views from a single frontal chest X-ray, motivated by the longer-term goal of reducing reliance on higher-radiation CT. The model trains on digitally reconstructed radiographs rendered from 771 CT volumes.",
   },
   {
     title: "360° Novel View Synthesis from Single Chest X-Ray Images via a World Foundation Model",
     href: repo("CosmosXRay360"),
-    meta: "Manuscript, available on request. First author.",
-    body: "Post-trains Cosmos-Predict2.5 with a rectified flow objective to turn one chest X-ray into a 360° sequence. It reaches 23.26 PSNR and 0.777 SSIM, 2.21 dB above the strongest baseline (SV-DRR).",
+    meta: "First-author manuscript, unpublished; available upon request.",
+    body: "Formulates 93-view synthesis as structured video generation. It post-trains Cosmos-Predict2.5 (2B) with a rectified flow objective on DRRs from 1,698 CT volumes, split by patient. It reaches 23.26 PSNR and 0.777 SSIM, 2.21 dB above the strongest baseline, SV-DRR (21.05 PSNR). Zero-shot Cosmos reaches only 7.49 PSNR.",
   },
   {
     title: "Generating 3D Models from Multimodal Descriptions",
-    href: repo("Thesis-Project"),
-    meta: "Bachelor thesis, Ho Chi Minh City University of Technology.",
-    body: "Fine-tunes TRELLIS on the Houses3K dataset to generate textured 3D houses from text and images. LoRA with L2-SP regularization keeps fine-tuning stable, and knowledge distillation shrinks the model. The thesis also compares rectified flow with diffusion.",
+    href: repo("My-Thesis"),
+    meta: "Bachelor's thesis (2-person team), Ho Chi Minh City University of Technology. Advisor: Dr. Le Thanh Sach.",
+    body: "Adapts the text-conditioned TRELLIS generator to Houses3K (3,000 models) with full fine-tuning, L2-SP and LoRA. Full fine-tuning cuts the Fréchet distance from 345.66 to 198.54, while LoRA preserves the pretrained CLIP score. Rectified flow beats diffusion with 25 versus 700 sampling steps. Knowledge distillation cuts inference from 8.99 s to 2.73 s per sample, at a cost in fidelity.",
   },
 ];
 
 export const experience = [
   {
-    title: "Research Engineer, GraphicsMiner Lab",
-    meta: "June 2024 to present. Ho Chi Minh City, Vietnam.",
+    title: "Research Engineer, GraphicsMiner Vietnam",
+    meta: "June 2025 to October 2026. Research Intern, June 2024 to May 2025. Ho Chi Minh City, Vietnam.",
     bullets: [
-      "Lead the lab's medical imaging research, adapting NVIDIA Cosmos world foundation models to the medical domain.",
-      "Built a model optimization pipeline (TorchScript, ONNX, TensorRT) and a GPU inference service on NVIDIA Triton. Throughput rose 1.5× and latency fell 33%.",
-      "Led an agentic pipeline that automates 3D asset modeling, texturing, rigging and animation, cutting a multi-stage manual workflow to under 10 minutes of inference. It runs on Google Kubernetes Engine.",
-      "Led Document2Object, which parses document layouts with vision-language models and grounding detectors, then restores figures with one-step latent diffusion.",
+      "Chest X-ray novel view synthesis (researcher): the two research outputs above, from adapting world foundation models to a medical domain.",
+      "On-device single-instance object detection (lead researcher): given about 40 photos of one object, find it in live camera frames or report its absence, with no per-object training (YOLOE visual prompts with a DINOv3 verifier). It reaches an AUROC of 0.80 on BOP HOPE (28 objects), versus 0.57 for an on-device fine-tuned detector. It runs in an Android app with an INT8 model, enrolling an object in about 7 s and recognizing it at about 0.2 s per frame. Evaluation against lookalikes is ongoing.",
+      "Autonomous 3D asset generation (primary developer): automates the pipeline from text or image prompts through modeling, texturing, rigging and animation, cutting per-model production time from weeks to under 10 minutes. The meshes fill the 3D library of Sant, GraphicsMiner's application, which holds 13,900+ models.",
+      "Document2Object (primary developer): turns scanned archives (PDFs, comics, photos) into searchable people, artifacts and scenes. A vision-language model proposes a semantic tree for each page, and GroundingDINO localizes the objects inside it. It has processed 2,300+ inputs (about 2,900 pages) into 19,000+ searchable objects.",
     ],
   },
   {
-    title: "B.Eng. in Computer Science, Ho Chi Minh City University of Technology",
-    meta: "September 2021 to October 2025. Major GPA 3.8 out of 4.0.",
+    title: "Teaching Assistant (part-time), DeepViet",
+    meta: "July 2026 to present. Computer Graphics and Physical AI.",
+    body: "Assists with courses in computer graphics and physical AI at DeepViet, an AI community for students and engineers in Vietnam.",
+  },
+  {
+    title: "B.E. in Computer Science, Ho Chi Minh City University of Technology",
+    meta: "September 2021 to October 2025. Major GPA 3.8 out of 4.0 (Excellent).",
     body: "Specialized in applied artificial intelligence, image processing and computer vision.",
   },
 ];
 
 export const projects = [
-  { name: "CosmosXRay360", body: "Code for the 360° chest X-ray view synthesis paper." },
-  { name: "Thesis-Project", body: "Code for the bachelor thesis on 3D generation from multimodal descriptions." },
-  { name: "Model-Conversion", lang: "Python", body: "A toolkit for converting and optimizing deep learning models." },
-  { name: "HCMUT_SSPS", lang: "JavaScript", body: "A smart printing service for HCMUT students." },
-  { name: "3D-Rendering", lang: "C++", body: "Implementations of 3D rendering techniques." },
+  { name: "DRR", lang: "Python", body: "A benchmarking suite for digitally reconstructed radiographs. It compares DRR renderers (Plastimatch, DiffDRR, PyTorch3D, DeepDRR) under one shared geometry." },
+  { name: "DICOM-Cleaner", lang: "JavaScript", body: "A full-stack app that removes yellow and green annotations from ultrasound DICOM scans, using a FastAPI backend and OpenCV inpainting." },
+  { name: "Model-Conversion", lang: "Python", body: "A toolkit for converting, optimizing and verifying deep learning models. Currently being rewritten from the ground up." },
+  { name: "PDF-Table-Extractor", lang: "Python", body: "A script that extracts the tables of a PDF into one clean Markdown file." },
+  { name: "Ray-Based-Rendering", lang: "C++", body: "A modular C++17 renderer covering ray casting, Whitted ray tracing, path tracing and volumetric rendering behind one camera, scene and integrator interface, with four interchangeable acceleration structures." },
+  { name: "Reversi-Bot", lang: "Python", body: "Reversi agents built with Minimax and Deep Q-Learning." },
   { name: "HOG", lang: "Java", body: "Human detection with Histograms of Oriented Gradients." },
-  { name: "Brain_Image_Captioning", lang: "Jupyter Notebook", body: "Image captioning for brain scans." },
-  { name: "2048", lang: "C++", body: "The 2048 game." },
 ].map((p) => ({ ...p, href: repo(p.name) }));
 
 export const honors = [
   { year: "2022", text: "Second prize, National Mathematical Olympiad for University Students (Algebra and Calculus)" },
   { year: "2022", text: "National finalist, ICPC Vietnam National Programming Contest" },
-  { year: "2019 and 2020", text: "Third prize, Vietnam National Mathematical Olympiad" },
+  { year: "2019, 2020", text: "Third prize, Vietnam National Mathematical Olympiad" },
 ];

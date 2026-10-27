@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const SITE = "Huynh Nguyen Phuc";
+const SITE = "Phuc Huynh";
 
 export default function usePageTitle(title) {
   useEffect(() => {

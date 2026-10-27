@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <p>&copy; {new Date().getFullYear()} Huynh Nguyen Phuc</p>
+      <p>&copy; {new Date().getFullYear()} Phuc Huynh</p>
     </footer>
   );
 }

@@ -16,11 +16,11 @@ Open the address Vite prints (http://localhost:5173). `npm run build` writes the
 1. Copy `src/posts/_template.md` to `src/posts/my-post.md`.
 2. Edit the front matter (`title`, `date`, `summary`) and write the post in Markdown.
 
-The file name becomes the address (`/blog/my-post`). Posts are sorted by `date`, newest first, and the three newest also appear on the home page. Files starting with an underscore are ignored.
+The file name becomes the address (`/blog/my-post`). Posts are sorted by `date`, newest first, and all of them are listed on the home page. Files starting with an underscore are ignored.
 
 ## Edit the home page
 
-Text for research, experience, projects and honors lives in `src/content.js`. The layout is in `src/pages/Home.jsx`, and colors and type are the variables at the top of `src/styles.css`.
+Text for research, experience, projects and honors lives in `src/content.js` and shows on the About page (`src/pages/About.jsx`). The blog home page is `src/pages/Home.jsx`, and colors and type are the variables at the top of `src/styles.css`.
 
 ## Publish
 
