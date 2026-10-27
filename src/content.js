@@ -19,7 +19,7 @@ export const research = [
     title: "360° Novel View Synthesis from Single Chest X-Ray Images via a World Foundation Model",
     href: repo("CosmosXRay360"),
     meta: "First-author manuscript, unpublished; available upon request.",
-    body: "Formulates 93-view synthesis as structured video generation. It post-trains Cosmos-Predict2.5 (2B) with a rectified flow objective on DRRs from 1,698 CT volumes, split by patient. It reaches 23.26 PSNR and 0.777 SSIM, 2.21 dB above the strongest baseline, SV-DRR (21.05 PSNR). Zero-shot Cosmos reaches only 7.49 PSNR.",
+    body: "Formulates 93-view synthesis as structured video generation. It post-trains Cosmos-Predict2.5 (2B) with a rectified flow objective on DRRs from 1,698 CT volumes, split at the volume level. It reaches 23.26 PSNR and 0.777 SSIM, 2.21 dB above the strongest baseline, SV-DRR (21.05 PSNR). Zero-shot Cosmos reaches only 7.49 PSNR.",
   },
   {
     title: "Generating 3D Models from Multimodal Descriptions",
@@ -53,9 +53,9 @@ export const experience = [
 ];
 
 export const projects = [
-  { name: "DRR", lang: "Python", body: "A benchmarking suite for digitally reconstructed radiographs. It compares DRR renderers (Plastimatch, DiffDRR, PyTorch3D, DeepDRR) under one shared geometry." },
+  { name: "DRR", lang: "Python", body: "A benchmarking suite for digitally reconstructed radiographs. It compares five renderers (Plastimatch, DiffDRR, a PyTorch3D-based volume renderer, DeepDRR and a deterministic polychromatic ray march) on speed, GPU memory, agreement with a reference and 2D/3D registration, under one shared geometry." },
   { name: "DICOM-Cleaner", lang: "JavaScript", body: "A full-stack app that removes yellow and green annotations from ultrasound DICOM scans, using a FastAPI backend and OpenCV inpainting." },
-  { name: "Model-Conversion", lang: "Python", body: "A toolkit for converting, optimizing and verifying deep learning models. Currently being rewritten from the ground up." },
+  { name: "Model-Conversion", lang: "Python", body: "A toolkit that converts PyTorch models to ONNX, TensorRT and TorchScript, with optional quantization and pruning (NVIDIA ModelOpt), output verification against the original model, and export to Triton Inference Server." },
   { name: "PDF-Table-Extractor", lang: "Python", body: "A script that extracts the tables of a PDF into one clean Markdown file." },
   { name: "Ray-Based-Rendering", lang: "C++", body: "A modular C++17 renderer covering ray casting, Whitted ray tracing, path tracing and volumetric rendering behind one camera, scene and integrator interface, with four interchangeable acceleration structures." },
   { name: "Reversi-Bot", lang: "Python", body: "Reversi agents built with Minimax and Deep Q-Learning." },
@@ -63,7 +63,7 @@ export const projects = [
 ].map((p) => ({ ...p, href: repo(p.name) }));
 
 export const honors = [
-  { year: "2022", text: "Second prize, National Mathematical Olympiad for University Students (Algebra and Calculus)" },
+  { year: "2023", text: "Second prize, National Mathematical Olympiad for University Students (Algebra and Calculus)" },
   { year: "2022", text: "National finalist, ICPC Vietnam National Programming Contest" },
   { year: "2019, 2020", text: "Third prize, Vietnam National Mathematical Olympiad" },
 ];
