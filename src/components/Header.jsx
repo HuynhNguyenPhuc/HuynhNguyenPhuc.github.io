@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { posts } from "../posts.js";
 
 function readTheme() {
   try {
@@ -51,9 +52,11 @@ export default function Header() {
         </button>
       </div>
       <nav aria-label="Main">
-        <NavLink to="/" end>
-          Posts
-        </NavLink>
+        {posts.length > 0 && (
+          <NavLink to="/" end>
+            Posts
+          </NavLink>
+        )}
         <NavLink to="/about">About</NavLink>
       </nav>
     </header>

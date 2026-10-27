@@ -11,13 +11,13 @@ function Section({ id, title, children }) {
   );
 }
 
-export default function About() {
-  usePageTitle("About");
+export default function About({ home = false }) {
+  usePageTitle(home ? "" : "About");
 
   return (
     <>
       <section className="intro" aria-labelledby="top">
-        <h1 id="top">About me</h1>
+        <h1 id="top">{home ? `Hi, I'm ${profile.name}` : "About me"}</h1>
         <p className="lead">{profile.lead}</p>
         <Icons />
       </section>
